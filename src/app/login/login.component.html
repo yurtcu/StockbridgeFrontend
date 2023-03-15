@@ -1,0 +1,44 @@
+
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <div class="col-md-6 d-none d-md-flex bg-image"></div>
+        <div class="col-md-6 bg-light">
+            <div class="login d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 col-xl-5 mx-auto">
+                            <h3 class="display-4">Login</h3>
+                            <form (ngSubmit)="onSubmit()">
+                                <div [formGroup]="loginForm" class="form-group mb-3">
+                                    <input id="inputEmail" type="email" placeholder="Email address" formControlName="email" required autofocus="" class="form-control border-0 shadow-sm px-4">
+                                    <div *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)" class="bg-danger px-4 p-0">
+                                        <div *ngIf="loginForm.controls['email'].errors?.required == true">
+                                            <small>Email is required.</small>
+                                        </div>
+                                        <div *ngIf="loginForm.controls['email'].errors?.email == true">
+                                            <small>Invalid email format.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div [formGroup]="loginForm" class="form-group mb-3">
+                                    <input id="inputPassword" type="password" placeholder="Password" formControlName="password" required class="form-control border-0 shadow-sm px-4 text-primary">
+                                    <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)" class="bg-danger px-4 p-0">
+                                        <div *ngIf="loginForm.controls['password'].errors?.required == true">
+                                            <small>Enter your password.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="custom-control custom-checkbox mb-3">
+                                    <input id="customCheck1" type="checkbox" checked class="custom-control-input">
+                                    <label for="customCheck1" class="custom-control-label">Remember password</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block text-uppercase mb-2 shadow-sm">Login</button>
+                                <p *ngIf="loginError" class="bg-danger px-4 p-0">{{loginError}}</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
