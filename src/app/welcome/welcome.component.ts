@@ -26,8 +26,8 @@ export class WelcomeComponent implements OnInit {
   private myWebSocket?: WebSocketSubject<mySocketMessage>;
   private retryCount: number = 0;
   private maxRetryCount: number = 3;
-  private wsUrl: string = 'wss://socketsbay.com/wss/v2/1/demo/'; // 3rd party socket server for testing...
-  //private wsUrl: string = 'ws://66.70.229.82:8181/?' + this.cookieService.get('currentUser');
+  //private wsUrl: string = 'wss://socketsbay.com/wss/v2/1/demo/'; // 3rd party socket server for testing...
+  private wsUrl: string = 'ws://66.70.229.82:8181/?' + this.cookieService.get('currentUser');
 
   constructor(private apiService:ApiService, private cookieService: CookieService) { }
 
