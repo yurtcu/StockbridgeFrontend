@@ -1,9 +1,6 @@
-
-//File location in login folder and file name login.component.ts
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiResult } from "../api-result";
 import { ApiService } from "../api.service";
 
 @Component({
@@ -27,7 +24,6 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.valid){
       this.loginError = null;
       this.apiService.login(this.loginForm.value).subscribe((data) => {
-        console.log(data);
         if(data.status === 200 && data.body?.status === 0){
           this.router.navigate(['/welcome']);
         }

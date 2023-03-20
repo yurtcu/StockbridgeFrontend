@@ -1,18 +1,28 @@
 <div class="container-fluid">
-    <div class="row no-gutter">
-        <div class="col-md-6 d-none d-md-flex bg-image"></div>
-        <div class="col-md-6 bg-light">
-            <div class="welcome d-flex align-items-center py-5">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-10 col-xl-5 mx-auto">
-                            <h3 class="display-4">Welcome</h3>
-                            <h5 class="display-5">{{welcomeMessage}}</h5>
-                            <button class="btn btn-primary btn-block text-uppercase mb-2 shadow-sm" (click)="logout()">Logout</button>
-                        </div>
-                    </div>
-                </div>
+    <div class="row no-gutter my-status-bar">
+        <div class="d-flex justify-content-between flex-sm-grow-1 bg-dark">
+            <div class="col-md-2 text-secondary">
+                <h2>Welcome</h2>
             </div>
+            <div class="col-md-7 text-danger">
+                <h6 style="padding-top: 12px;">{{welcomeMessage}}</h6>
+            </div>
+            <div class="connecting-indicator" [hidden]="onlineStatus != null" title="Connecting to websocket">
+                <span class="yellow-blink"></span>
+            </div>
+            <div class="online-indicator" [hidden]="!onlineStatus" title="Websocket connection is live">
+                <span class="green-blink"></span>
+            </div>
+            <div class="offline-indicator" [hidden]="onlineStatus == null || onlineStatus === true" title="No connection to websocket, please logout and login to connect.">
+            </div>
+            <div class="col-md-2 ">
+                <button class="btn btn-primary btn-block text-uppercase mb-2 shadow-sm" (click)="logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+    <div class="row no-gutter">
+        <div class="col-md-12 bg-light">
+            <div class="welcome d-none d-md-flex bg-image"><p class="watermark">Fake dashboard</p></div>
         </div>
     </div>
 </div>
